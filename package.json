@@ -1,0 +1,26 @@
+{
+  "name": "bdd-cucumber",
+  "type": "module",
+  "devDependencies": {
+    "@types/dotenv": "^8.2.3",
+    "@wdio/cli": "^9.4.1",
+    "@wdio/cucumber-framework": "^9.3.1",
+    "@wdio/local-runner": "^9.4.1",
+    "@wdio/types": "^9.2.2",
+    "tsx": "^4.19.2"
+  },
+  "version": "1.0.0",
+  "description": "Cucumber related tasks of \"Automated Testing Mentoring with JS: Basic\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio run ./src/configs/wdio.conf.ts"
+  },
+  "keywords": [
+    "BDD"
+  ],
+  "author": "aleksei_vasilev6@epam.com",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}

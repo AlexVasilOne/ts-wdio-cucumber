@@ -17,3 +17,8 @@ When('I login as {string}', async function (userType: string) {
     window.localStorage.setItem('token', tokenValue)
   }, tokenValue);
 });
+
+When('I click {string} -> {string}', 
+  async function (pageName:string, elementName:string) {
+    await pageFactory.getPage(pageName).getElement(elementName).click();
+});

@@ -1,10 +1,8 @@
 import { When } from '@wdio/cucumber-framework';
-import WelcomePage from '../po/pages/welcome.page';
-
-const welcomePage = new WelcomePage('/assure'); 
+import pageFactory from '../po/pages/pageFactory'; 
 
 When('I open {string}', async function (pageName: string) {
-  if(pageName === 'WelcomePage') await welcomePage.open();
+  await pageFactory.getPage(pageName).open(); 
 }); 
 
 // we can use "NewUser" as a param so that token value will be an 

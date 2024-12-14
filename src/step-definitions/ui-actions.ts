@@ -1,8 +1,21 @@
 import { When } from '@wdio/cucumber-framework';
-import WelcomePage from '../po/pages/welcome.page'
+import WelcomePage from '../po/pages/welcome.page';
 
 const welcomePage = new WelcomePage('/assure'); 
 
-When('I open WelcomePage', async function () {
-  await welcomePage.open();
+When('I open {string}', async function (pageName: string) {
+  if(pageName === 'WelcomePage') await welcomePage.open();
 }); 
+
+// we can use "NewUser" as a param so that token value will be an 
+// empty string and server will create a new user automatically
+When('I login as {string}', async function (userType: string) {
+  let tokenValue: string = '';
+  //later new types of users can be added
+  if(userType === 'userWithPermissions') {
+    tokenValue = process.env.USER_WITH_PERMISSIONS || ''; 
+  }; 
+  await browser.execute((tokenValue: string) => {
+    window.localStorage.setItem('token', tokenValue)
+  }, tokenValue);
+});

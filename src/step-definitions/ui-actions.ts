@@ -22,3 +22,8 @@ When('I click {string} -> {string}',
   async function (pageName:string, elementName:string) {
     await pageFactory.getPage(pageName).getElement(elementName).click();
 });
+
+When('I reload the page', async function () {
+  await browser.refresh();
+  browser.pause(5000);
+})

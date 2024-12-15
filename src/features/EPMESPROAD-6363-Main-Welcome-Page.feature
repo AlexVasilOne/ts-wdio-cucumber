@@ -26,7 +26,9 @@ Scenario: EPMESPROAD-6737 newUser can't see previous loaded files component
 
 @sampleFileUpload @allFilesDelete
 Scenario: EPMESPROAD-6739 Existing user's view - display the previously uploaded files
-and open a previously uploaded file's results
+  When I login as 'userWithPermissions'
+   And I reload the page
+  Then I expect 'welcomePage' -> 'previousDataset' should 'to be' displayed
 
 
 

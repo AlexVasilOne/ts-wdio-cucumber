@@ -25,5 +25,4 @@ When('I click {string} -> {string}',
 
 When('I reload the page', async function () {
   await browser.refresh();
-  browser.pause(5000);
-})
+});

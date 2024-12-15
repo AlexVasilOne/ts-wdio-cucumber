@@ -3,6 +3,7 @@ Feature: EPMESPROAD-6363 Implement the Main Welcome Page
 Background:
   Given I open 'welcomePage'
 
+@sampleFileUpload @allFilesDelete
 Scenario Outline: EPMESPROAD-6737 welcome page content 
   When I login as '<user>'
   #page contains common elements
@@ -23,6 +24,7 @@ Scenario: EPMESPROAD-6737 newUser can't see previous loaded files component
   When I login as 'newUser'
   Then I expect 'welcomePage' -> 'previousDataset' should 'not to be' displayed
 
+@sampleFileUpload @allFilesDelete
 Scenario: EPMESPROAD-6739 Existing user's view - display the previously uploaded files
 and open a previously uploaded file's results
 

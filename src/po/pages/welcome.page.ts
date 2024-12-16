@@ -1,14 +1,16 @@
 import Page from './base.page'
 import PreviousDataset from '../components/welcome.page/previousDataset.component';
+import BaseComponent from '../components/base.component';
+import GetElement from "../page.interface";
 
-export default class WelcomePage extends Page {
-  private previousDataset:PreviousDataset; 
-  constructor(url: string){
+export default class WelcomePage extends Page implements GetElement {
+  private previousDataset: PreviousDataset;
+  constructor(url: string) {
     super(url);
-    this.previousDataset = new PreviousDataset(); 
+    this.previousDataset = new PreviousDataset();
   }
-  getElement(elementName:string): WebdriverIO.Element {
-    switch(elementName) {
+  getElement(elementName: string): WebdriverIO.Element | BaseComponent {
+    switch (elementName) {
       case 'uploadNewDataset':
         return $('//button[text()="+ Upload New Dataset"]');
       case 'logo':
@@ -16,12 +18,9 @@ export default class WelcomePage extends Page {
       case 'userMessage':
         return $('main h1');
       case 'previousDataset':
-        return this.previousDataset.rootEl; 
+        return this.previousDataset;
       default:
         throw new Error('Undefined element name');
     }
-  }
-  get getPreviousDataset (): PreviousDataset {
-    return this.previousDataset; 
   }
 }

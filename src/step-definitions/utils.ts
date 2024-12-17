@@ -10,9 +10,9 @@ export default function getElementByPath(elementPath: string): WebdriverIO.Eleme
   }
   //assumes that the first word in elementPath is always a page
   let resultElement = pageFactory.getPage(arrayOfElements[0]);
-  for (let i = 1; i < arrayOfElements.length; i++) {
-    if (resultElement.getElement(arrayOfElements[i])) {
-      resultElement = resultElement.getElement(arrayOfElements[i]);
+  for (const elementName of arrayOfElements.slice(1)) {
+    if (resultElement.getElement(elementName)) {
+      resultElement = resultElement.getElement(elementName);
     }
   }
   //if we have path like "Page -> Component"

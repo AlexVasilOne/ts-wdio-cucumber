@@ -1,5 +1,5 @@
 import { Then } from '@wdio/cucumber-framework';
-import getElementByPath from './utils';
+import getElementByPath from './utils.ts';
 
 Then('I expect {string} should {string} displayed',
   async function (elementPath: string, shouldBeParam: string) {

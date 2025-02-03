@@ -1,6 +1,6 @@
 import { When } from '@wdio/cucumber-framework';
-import pageFactory from '../po/pages/pageFactory';
-import getElementByPath from './utils';
+import pageFactory from '../po/pages/pageFactory.ts';
+import getElementByPath from './utils.ts';
 
 When('I open {string}', async function (pageName: string) {
   await pageFactory.getPage(pageName).open();

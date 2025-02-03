@@ -1,7 +1,7 @@
-import Page from './base.page'
-import PreviousDataset from 'po/components/welcome.page/previousDataset.component';
-import BaseComponent from 'po/components/base.component';
-import GetElement from "po/page.interface";
+import Page from './base.page.ts'
+import PreviousDataset from 'po/components/welcome.page/previousDataset.component.ts';
+import BaseComponent from 'po/components/base.component.ts';
+import GetElement from "po/page.interface.ts";
 
 export default class WelcomePage extends Page implements GetElement {
   private previousDataset: PreviousDataset;

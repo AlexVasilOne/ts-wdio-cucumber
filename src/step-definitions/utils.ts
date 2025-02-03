@@ -1,6 +1,6 @@
-import BaseComponent from 'po/components/base.component';
-import Page from 'po/pages/base.page';
-import pageFactory from 'po/pages/pageFactory';
+import BaseComponent from 'po/components/base.component.ts';
+import Page from 'po/pages/base.page.ts';
+import pageFactory from 'po/pages/pageFactory.ts';
 
 
 export default function getElementByPath(elementPath: string): WebdriverIO.Element | Page {

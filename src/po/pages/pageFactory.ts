@@ -1,4 +1,4 @@
-import WelcomePage from './welcome.page';
+import WelcomePage from './welcome.page.ts';
 
 class PageFactory {
   private welcomePage:WelcomePage = new WelcomePage('/assure');

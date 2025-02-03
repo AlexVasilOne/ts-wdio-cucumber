@@ -1,5 +1,5 @@
-import BaseComponent from "../base.component";
-import GetElement from "../../page.interface";
+import BaseComponent from "../base.component.ts";
+import GetElement from "../../page.interface.ts";
 
 export default class PreviousDataset extends BaseComponent implements GetElement {
   constructor() {

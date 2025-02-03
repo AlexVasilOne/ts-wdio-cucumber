@@ -13,7 +13,7 @@
       "expect-webdriverio",
       "@wdio/cucumber-framework"
     ],
-    "baseUrl": "../../",
+    "baseUrl": "../",
     "skipLibCheck": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,

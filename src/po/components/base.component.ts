@@ -1,6 +1,6 @@
-export default class BaseComponent {
-  private rootSelector:string; 
-  constructor(rootSelector) {
+export default abstract class BaseComponent {
+  private readonly rootSelector:string; 
+  constructor(rootSelector: string) {
     this.rootSelector = rootSelector;
   }
   get rootEl() {

@@ -1,5 +1,5 @@
-export default class Page {
-  private path: string; 
+export default abstract class Page {
+  private readonly path: string; 
   constructor(path: string){
     this.path = path; 
   }

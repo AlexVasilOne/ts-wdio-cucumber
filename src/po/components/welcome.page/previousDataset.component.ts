@@ -1,11 +1,11 @@
 import BaseComponent from "../base.component.ts";
-import GetElement from "../../page.interface.ts";
+import GetElement from "po/page.interface.ts";
 
 export default class PreviousDataset extends BaseComponent implements GetElement {
   constructor() {
     super('div.accordion');
   }
-  getElement(elementName: string): WebdriverIO.Element | BaseComponent {
+  getElement(elementName: string) {
     switch (elementName) {
       case 'fileCard':
         return this.rootEl.$('ul div')

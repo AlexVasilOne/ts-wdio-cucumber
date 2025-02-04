@@ -1,25 +1,24 @@
 import BaseComponent from 'po/components/base.component.ts';
 import Page from 'po/pages/base.page.ts';
-import pageFactory from 'po/pages/pageFactory.ts';
+import  { App, type Pages } from 'po/index.ts';
 
 
-export default function getElementByPath(elementPath: string): WebdriverIO.Element | Page {
+export default function getElementByPath(elementPath: string): ChainablePromiseElement | Page {
   const arrayOfElements = elementPath.split('>').map(x => x.trim());
   if (arrayOfElements.length < 2) {
     throw new Error('You should use path which has more than one element');
   }
-  //assumes that the first word in elementPath is always a page
-  let resultElement = pageFactory.getPage(arrayOfElements[0]);
-  for (const elementName of arrayOfElements.slice(1)) {
-    if (resultElement.getElement(elementName)) {
-      resultElement = resultElement.getElement(elementName);
+  const page = App[arrayOfElements[0] as keyof Pages];
+  let resultedElement: ChainablePromiseElement | BaseComponent = page.getElement(arrayOfElements[1]);
+
+  for (const elementName of arrayOfElements.slice(2)) {
+    if (resultedElement.getElement(elementName)) {
+      resultedElement = resultedElement.getElement(elementName);
     }
   }
-  //if we have path like "Page -> Component"
-  //instead of getting Component obj we would like 
-  // to get it's root element for future interaction
-  if (resultElement instanceof BaseComponent) {
-    return resultElement.rootEl;
+  
+  if (resultedElement instanceof BaseComponent) {
+    return resultedElement.rootEl;
   }
-  return resultElement;
+  return resultedElement;
 }

@@ -1,16 +1,13 @@
 import { When } from '@wdio/cucumber-framework';
-import pageFactory from '../po/pages/pageFactory.ts';
+import  { App, type Pages } from 'po/index.ts';
 import getElementByPath from './utils.ts';
 
 When('I open {string}', async function (pageName: string) {
-  await pageFactory.getPage(pageName).open();
+  await App[pageName as keyof Pages].open();
 });
 
-// we can use "NewUser" as a param so that token value will be an 
-// empty string and server will create a new user automatically
 When('I login as {string}', async function (userType: string) {
-  let tokenValue: string = '';
-  //later new types of users can be added
+  let tokenValue = '';
   if (userType === 'userWithPermissions') {
     tokenValue = process.env.USER_WITH_PERMISSIONS || '';
   };

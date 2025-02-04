@@ -22,13 +22,16 @@ Before({ tags: '@sampleFileUpload' }, async function () {
 });
 
 After({ tags: '@allFilesDelete' }, async function () {
+  interface GetResponseBody {
+    files: string[];
+  }
   const getResponse = await fetch('https://aist.lab.epam.com/api-assure/api/file/', {
     method: 'GET',
     headers: {
       "Authorization": `Bearer ${process.env.USER_WITH_PERMISSIONS}`,
     },
   });
-  const getResponseBody = await getResponse.json()
+  const getResponseBody = await getResponse.json() as GetResponseBody;
   const uploadedFiles = getResponseBody.files;
   for (const file of uploadedFiles) {
     await fetch(`https://aist.lab.epam.com/api-assure/api/file/${file}`, {

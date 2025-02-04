@@ -4,8 +4,8 @@ import type GetElement from "po/page.interface.ts";
 
 export default class WelcomePage extends Page implements GetElement {
   private readonly previousDataset: PreviousDataset;
-  constructor(url: string) {
-    super(url);
+  constructor() {
+    super('/assure');
     this.previousDataset = new PreviousDataset();
   }
   getElement(elementName: string) {
@@ -22,4 +22,4 @@ export default class WelcomePage extends Page implements GetElement {
         throw new Error('Undefined element name');
     }
   }
-}
+} 
